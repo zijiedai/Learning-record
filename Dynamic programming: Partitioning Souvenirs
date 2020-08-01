@@ -1,0 +1,20 @@
+-----
+Problem Description:
+Input Format: The first line contains an integer 𝑛. The second line contains integers 𝑣1, 𝑣2, . . . , 𝑣𝑛 separated
+by spaces.
+Constraints: 1 ≤ 𝑛 ≤ 20, 1 ≤ 𝑣𝑖 ≤ 30 for all 𝑖.
+Output Format: Output 1, if it possible to partition 𝑣1, 𝑣2, . . . , 𝑣𝑛 into three subsets with equal sums, and
+0 otherwise
+-----
+Problem overview:
+1\  If the total number is divisible by 3, and there exist 2 groups contaning elements whose sum is the target number,then 1.
+
+
+-----
+Denotion:
+2020/08/01
+First attempt:
+   1\Let's denote V(i,j) as the maximum value that can be reached with first i items with weight limit j.
+   2\
+   Didn't come out a solution, I'm going to redo the previous problems and come back later.
+
