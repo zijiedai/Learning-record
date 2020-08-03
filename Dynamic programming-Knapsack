@@ -1,0 +1,136 @@
+This file contains 2 problems relating to dynamic programming.
+Knapsack with repetitions and Knapsack without repetitions.
+
+
+
+
+-------------
+Knapsack with repetitions:
+---
+Problem Overview:
+This is a formal statement of the problem. 
+Inputs: n items with weights w1, w2 and so on, wn. And its values are v1, v2 and so on, Vn.
+By capital W denotes the total capacity or the total weight of the knapsack. 
+Output: Select the subset of items where each item can be taken any number of times such that the total weight is at most capital W while the total value is as large as possible.
+
+---
+Key: Take out one item from the optimal solution, the remainning solution is also optimal.
+---
+1\ 1D array: 
+    Memorize the biggest capacity with limit Wi.
+2\ optimal sub-problem:
+    op(i)=op(i-1)+vi.
+3\ Basic solution: 
+    v(0)=0;
+---
+Code:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+	int number,W;
+	cin >> number;
+	cin >> W;
+	vector <int> w(number+1);
+	vector <int> v(number+1);
+	for (int i = 1;i <= number;i++)
+		cin >> w[i];
+	for (int i = 1;i <= number;i++)
+		cin >> v[i];
+	vector<int> memor(W+1);
+	int var;
+	int maxi;
+	for (int i = 1;i <= W;i++)
+	{
+		var = 0;
+		maxi = memor[i - 1];
+		for (int j = 1;j <= number;j++)
+		{
+			if (w[j] <= i)
+				var = memor[i - w[j]] + v[j];
+			maxi = max(var, maxi);
+		}
+		memor[i] = maxi;
+	}
+	for (int i = 0;i <= W;i++)
+		cout << memor[i] << " ";
+
+}
+
+----------
+Knapsack without repetitions:
+---
+Task: Given 𝑛 itmes, find the maximum values that fits into a bag of capacity 𝑊.
+--
+Input Format. The first line of the input contains the capacity 𝑊 of a knapsack and the number 𝑛 of bars
+of gold. The next line contains 𝑛 integers 𝑤0, 𝑤1, . . . , 𝑤𝑛−1 defining the weights of the items.
+And the next line contains n intefers v0,v1,v....vn-1 defining the value of the items.
+--
+Output Format. Output the maximum value of items that fits into a knapsack of capacity W.
+---
+Notions:
+1\ Use 2D array to store the sub-problem results.
+      0 | 1 | 2 | 3 |......| W |
+    0
+    1
+    2
+    3
+    .me
+    .
+    .
+  n-th item
+  Since I was quite confused by this memorization array, I would like to explain it a little.
+  Each clomun represents the max value that can be reached with the Weight limit Wi.
+  Each rows represents the max value that can be reached only using elements containing first i items.
+  （Which means you don't have to use them all, ultilising only some of the elements of first i items would be fine)
+  So each the element with position (i,j) means the max value with first i items whose sum doesn't exceed weight wi.
+  
+2\ Sub-problem:
+--- 
+Denotions:
+   Let's use V(i,j) to represent the 2D board.
+   then, V(i,j)=max(V(i-1,j-wi)+vi,V(i-1,j))
+   Here's another tough point. I would explain based on my understanding...
+   We know that, for each wi limit using first i items, we have 2 choices: 
+   1\ Put the i th item in it.
+   2\ Do not put the i-th item in it.
+   and the formulas inside the max(,) are two conditions I mentioned above.
+---
+Code:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+	int W, n;
+	cin >> W >> n;
+	vector<int> w(n+1);
+	vector<int> v(n + 1);
+	for (int i = 1;i <= n;i++)
+		cin >> w[i];
+	for (int i = 1;i <= n;i++)
+		cin >> v[i];
+	vector<vector<int> > board(n+1, vector<int>(W+1));
+	for(int i=1;i<=n;i++)
+		for (int j = 1;j <= W;j++)
+		{
+			int var = 0;
+			if (w[i] <= j)
+				var = board[i - 1][j - w[i]] + v[i];
+			board[i][j] = max(var, board[i - 1][j]);
+		}
+	for (int i = 0;i <= n;i++)
+	{
+		for (int j = 0;j <= W;j++)
+		{
+			cout << board[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+--------
