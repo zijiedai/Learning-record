@@ -11,10 +11,17 @@ Problem overview:
 
 
 -----
-Denotion:
+Progress:
 2020/08/01
 First attempt:
    1\Let's denote V(i,j) as the maximum value that can be reached with first i items with weight limit j.
    2\
    Didn't come out a solution, I'm going to redo the previous problems and come back later.
+   
+-----
+Date:2020-08-03
+Second Attempt:
+   With some hints from others, I came out an idea. The solution will basically build from the algorithm of knapsack without
+   repititions, which is included in the document "Dynamic programming-Knapsack".
+   
 
