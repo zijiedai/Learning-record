@@ -23,5 +23,11 @@ Date:2020-08-03
 Second Attempt:
    With some hints from others, I came out an idea. The solution will basically build from the algorithm of knapsack without
    repititions, which is included in the document "Dynamic programming-Knapsack".
+   This method uses the same algorithm as the problem I mentioned above, ultilizing a 2-D array to store the maximum value that
+   can be reached with first i items at the value limit V. 
+   -----
+   Let's denote S as the total sum of the integers.
+   If values S/3, S*2/3 appear in the 2-D board, then it means 
+   
    
 
