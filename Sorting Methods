@@ -1,0 +1,23 @@
+-------
+This file contains sorting methods I learned.
+Which are:
+1\ Quick Sort
+2\ Merge Sort
+-------
+
+
+1\:Quick Sort (Improved version)
+  This quick sort algorithm will also meet the condition that many elements are the same.(Since the old version quick sort would be relatively slow when facing this kind of 
+  situation.
+---
+  Basic concept: (Denote a[] as the corresponding array)
+  1\Pick a key value.
+  2\Set 2 index markers, one to mark from which index the values are equal to the key, while another to mark from which index values are bigger than the key.
+  3\Put the key to the front place.
+  4\From the i=1, determine whether a[i]<key, a[i]=key or a[i]>key.
+  5\If a[i]=key, both markers++. If a[i]<key,
+  3\Then, 
+
+
+
+
